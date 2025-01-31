@@ -1,0 +1,114 @@
+<main class="mt-20">
+  <div class="md:px-20 p-10">
+    <section class="max-w-7xl mx-auto">
+      <div
+        class="grid md:grid-cols-2 gap-10 place-items-center place-content-center"
+      >
+        <div class="flex gap-5">
+          <div class="flex flex-col items-center py-2">
+            <div>
+              <div class="w-4 h-4 rounded-full border-2 border-primary"></div>
+            </div>
+            <div class="h-full bg-primary w-0.5"></div>
+          </div>
+          <div>
+            <span class="text-primary">Our works</span>
+            <h2 class="font-semibold text-3xl">
+              We develop products that address issues faced by customers.
+            </h2>
+          </div>
+        </div>
+        <div>
+          <p class="text-textGrey">
+            Imperdiet in vel pharetra felis adipiscing pharetra pharetra
+            tincidunt. Id diam at lacus nunc arcu. Aliquet duis blandit nibh
+            porttitor. Tempor aenean nibh ultrices mauris ac odio a hac. Sed id
+            pretium vestibulum pellentesque iaculis risus. Dictum tincidunt
+            fermentum pellentesque felis.
+          </p>
+        </div>
+      </div>
+      <div class="my-12">
+        <div class="">
+          <div class="flex flex-col md:flex-row justify-start gap-2 md:gap-5">
+            <button
+              *ngFor="let category of categories"
+              class=" p-3 px-16 rounded-lg  {{
+                selectedCategory === category
+                  ? 'bg-black text-white'
+                  : 'hover:bg-primary hover:text-white'
+              }}"
+              (click)="onSelectCategory(category)"
+            >
+              {{ category }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div
+          class="bg-primary/5 absolute w-full h-full min-h-64 backdrop-blur-sm"
+          *ngIf="loading"
+        ></div>
+        <div
+          *ngFor="let item of projects; index as i"
+          class="grid md:grid-cols-2 gap-6 mb-14"
+        >
+          <div class="{{ i % 2 === 0 ? 'order-last' : '' }}">
+            <div
+              class="bg-[#E9E9E9] w-full h-[400px] lg:h-[350px] rounded-xl overflow-hidden shadow-sm hover:border-primary duration-300 hover:shadow-lg"
+            >
+              <a [href]="item.link" target="_blank" [title]="item.title">
+                <img
+                  [src]="item.imageUrl"
+                  loading="lazy"
+                  [alt]="item.title"
+                  width="500"
+                  height="200"
+                  class="w-full h-full object-contain hover:scale-125 duration-300"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="flex flex-col gap-5">
+            <div>
+              <h4>
+                <span class="font-semibold">Client</span>&nbsp;&nbsp;&nbsp;{{
+                  item.clientName
+                }}
+              </h4>
+            </div>
+            <h3 class="font-semibold">
+              <a
+                [href]="item.link"
+                target="_blank"
+                [title]="item.title"
+                class="hover:underline"
+                >{{ item.title }}</a
+              >
+            </h3>
+            <p class="text-textGrey">
+              {{ item.description }}
+            </p>
+            <p>
+              {{ uiService.formatTags(item.tags) }}
+            </p>
+            <div class="flex items-center gap-4">
+              <div *ngFor="let stack of item.techStacksUsed">
+                <img
+                  [ngSrc]="uiService.getIconPath(stack)"
+                  loading="lazy"
+                  alt="figma"
+                  width="40"
+                  height="40"
+                  class="w-full h-full"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-brands></app-brands>
+    </section>
+  </div>
+</main>

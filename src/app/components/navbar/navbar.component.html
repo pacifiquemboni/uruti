@@ -1,0 +1,84 @@
+<nav
+  class="bg-black text-white flex items-center p-6 px-10 md:px-12 justify-between border-b-primary border-b-[3px] border-opacity-15 fixed w-full z-50 top-0"
+>
+  <div>
+    <a routerLink="/">
+      <img
+        [src]="logoImagePath"
+        width="150"
+        class="transition-all duration-300 hover:scale-110"
+        alt="URUTI_LOGO"
+        loading="lazy"
+      />
+    </a>
+  </div>
+  <ul class="md:flex gap-14 hidden">
+    <li *ngFor="let item of menuItems">
+      <a
+        routerLink="/{{ item.link }}"
+        routerLinkActive="activeLink"
+        class="hover:opacity-70"
+        >{{ item.title }}</a
+      >
+    </li>
+    <li>
+      <a routerLink="about" class="hover:opacity-70" fragment="team">Team</a>
+    </li>
+    <li>
+      <a routerLink="/" class="hover:opacity-70" fragment="testimonials"
+        >Testimonials</a
+      >
+    </li>
+
+    <li>
+      <a
+        routerLink="/"
+        fragment="contact-us"
+        class="bg-primary p-3 rounded-lg px-5 hover:bg-white hover:text-primary whitespace-nowrap"
+        >Reach to us</a
+      >
+    </li>
+  </ul>
+
+  <div class="md:hidden">
+    <div
+      id="menu"
+      class="absolute flex-col items-center self-end z-50 hidden py-8 mt-10 space-y-6 font-bold bg-white rounded-md sm:w-auto sm:self-center left-6 right-6 drop-shadow-md"
+    >
+      <a
+        *ngFor="let item of menuItems"
+        [routerLink]="item.link"
+        class="p-1.5 px-6 rounded uppercase transition-all duration-300 text-primary"
+      >
+        {{ item.title }}
+      </a>
+      <a
+        routerLink="/"
+        class="p-1.5 px-6 rounded uppercase transition-all duration-300 text-primary"
+        fragment="testimonials"
+        >Testimonials</a
+      >
+      <a
+        routerLink="about"
+        class="p-1.5 px-6 rounded uppercase transition-all duration-300 text-primary"
+        fragment="team"
+        >Team</a
+      >
+      <a
+        routerLink="/"
+        fragment="contact-us"
+        class="bg-primary p-3 rounded-lg px-5 hover:bg-white hover:text-primary"
+        >Reach to us</a
+      >
+    </div>
+  </div>
+  <button
+    (click)="handleClickMenu()"
+    id="menu-btn"
+    class="block hamburger md:hidden focus:outline-none"
+  >
+    <span class="hamburger-top bg-white"></span>
+    <span class="hamburger-middle bg-white"></span>
+    <span class="hamburger-bottom bg-white"></span>
+  </button>
+</nav>

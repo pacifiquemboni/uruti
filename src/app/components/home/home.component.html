@@ -1,0 +1,90 @@
+<app-header></app-header>
+<app-brands></app-brands>
+<div class="px-10 md:px-20">
+  <section id="about-section" class="max-w-7xl mx-auto md:py-10">
+    <div
+      class="grid md:grid-cols-2 gap-10 place-items-center place-content-center"
+    >
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center py-2">
+          <div>
+            <div class="w-4 h-4 rounded-full border-2 border-primary"></div>
+          </div>
+          <div class="h-full bg-primary w-0.5"></div>
+        </div>
+        <div>
+          <span class="text-primary">What We Do</span>
+          <h2 class="font-semibold text-3xl">
+            The Greatest Professionals Are Here To Help You Grow Your Company.
+          </h2>
+        </div>
+      </div>
+      <div>
+        <p class="text-textGrey">
+          With a strong online presence, our knowledgeable staff can greatly
+          assist you in growing your business. To improve your online
+          visibility, we will assist you in creating mobile-friendly websites,
+          iOS and Android apps, and cloud-based applications.
+        </p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10 py-16">
+      <div
+        *ngFor="let service of services"
+        class="text-center flex flex-col items-center gap-4"
+      >
+        <img [src]="service.icon" alt="#" width="60" loading="lazy" />
+        <h2 class="text-lg font-semibold">{{ service.title }}</h2>
+        <p class="text-textGrey">
+          {{ service.description }}
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section
+  id="principles-section"
+  class="bg-black bg-cover"
+  [ngStyle]="{ 'background-image': 'url(' + bg + ')' }"
+>
+  <div class="bg-black py-16 md:py-24 px-10 md:px-20 text-white bg-opacity-40">
+    <div
+      class="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-20 items-center"
+    >
+      <div>
+        <h2 class="font-semibold text-3xl text-center md:text-left">
+          We work by Creative Principles
+        </h2>
+        <div class="pt-10">
+          <div
+            *ngFor="let item of principles"
+            class="flex gap-4 items-center py-4"
+          >
+            <div class="w-40 md:w-auto">
+              <img
+                [src]="item.icon"
+                width="60"
+                class="w-full h-full"
+                alt="#"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <h4 class="text-primary font-semibold text-lg">
+                {{ item.title }}
+              </h4>
+              <p>{{ item.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <img [src]="graphic" alt="#" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+<app-products></app-products>
+<app-testimonials></app-testimonials>
+<app-contact-us></app-contact-us>
